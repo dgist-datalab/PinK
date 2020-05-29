@@ -1,7 +1,7 @@
 ## PinK
 ```
 This is a target on making high-speed in-storage Key-value Store with bounded tails
-PinK is based on special device setup as described in Lightstore(ASPLOS'19).
+PinK is based on special device setup as described in Lightstore (ASPLOS'19).
 
 It also has a simple simulation code for those who don't have a special device. 
 To building it, Fix "TARGET_LOWER=bdbm_drv" in Makefile to "TARGET_LOWER=posix_memory"
@@ -9,10 +9,10 @@ To building it, Fix "TARGET_LOWER=bdbm_drv" in Makefile to "TARGET_LOWER=posix_m
 ## How to run
 ### Setting
 ```
-FlashDriver$ vim ./include/settings.h
+PinK$ vim ./include/settings.h
 -> set GIGAUNIT variable as device size (e.g. #define GIGAUNIT 32L for 32GB test)
 
-FlashDriver$ vim ./interface/main.c
+PinK$ vim ./interface/main.c
 -> add benchmarks what you want (e.g. bench_add(SEQSET,0,RANGE,RANGE); for sequential write bench)
 ```
 
@@ -32,24 +32,24 @@ driver: [your_main_file] libdriver.a
 
 ### Makefile
 ```
-FlashDriver$ vim Makefile
+PinK$ vim Makefile
 -> You can select module for each layer to operate with.
 
 [Example]
 TARGET_INF=interface
-TARGET_ALGO=dftl            # Demand-based FTL
+TARGET_ALGO=Lsmtree           
 TARGET_LOWER=posix_memory   # memory(RAM Drive)
 -> Make with interface as Interface module
-   dftl as Algorithm module
+   Lsmtree as Algorithm module
    posix_memory as Lower module
 
 * Directory name of targets must exist on each layer's directory
-  (e.g. algorithm/dftl/ lower/posix_memory/ )
+  (e.g. algorithm/Lsmtree/ lower/posix_memory/ )
 ```
 
 ### Run
 ```
-FlashDriver$ make driver
-FlahsDriver$ ./driver
+PinK$ make driver
+Pink$ ./driver
 ```
 
