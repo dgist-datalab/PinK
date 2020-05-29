@@ -1,10 +1,11 @@
-#PinK
+## PinK
+```
 This is target on making high-speed in-storage Key-value Store with bounded tails
 PinK is based on special device setup as decribed in Lightstore(ASPLOS'19).
 
 It also has simple simulation code for storage device. 
 To building it, Fix "TARGET_LOWER=bdbm_drv" in Makefile to "TARGET_LOWER=posix_memory"
-
+```
 ## How to run
 ### Setting
 ```
